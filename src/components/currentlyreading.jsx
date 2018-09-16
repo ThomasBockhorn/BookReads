@@ -7,6 +7,7 @@ class currentlyreading extends Component {
             <div className="currentlyreading">
                 <h2 className="heading">Currently Reading</h2>
                 <hr className="style-two" />
+                <div className="currentlyreadingcontainer"></div>
             </div>
         );
     }

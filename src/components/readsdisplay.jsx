@@ -7,6 +7,7 @@ class readsdisplay extends Component {
             <div className="readsection">
                 <h2 className="heading">Already Read</h2>
                 <hr className="style-two" />
+                <div className="readsectioncontainer"> </div>
             </div>
         );
     }
