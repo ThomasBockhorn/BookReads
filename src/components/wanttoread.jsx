@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class readsdisplay extends Component {
+class wanttoread extends Component {
     state = {}
     render() {
         return (
-            <div className="readsection">
+            <div className="wanttoread">
             </div>
         );
     }
 }
 
-export default readsdisplay;
+export default wanttoread;

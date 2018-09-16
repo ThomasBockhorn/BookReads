@@ -2,17 +2,14 @@ import React, {
   Component
 } from 'react';
 import './App.css';
-import Navbar from './components/navbar';
-import Readsdisplay from './components/readsdisplay';
+import Container from './components/container';
 
 class App extends Component {
   render() {
     return ( <
       React.Fragment >
       <
-      Navbar / >
-      <
-      Readsdisplay / >
+      Container / >
       <
       /React.Fragment>
     );
