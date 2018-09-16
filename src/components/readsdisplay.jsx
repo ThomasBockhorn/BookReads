@@ -5,6 +5,8 @@ class readsdisplay extends Component {
     render() {
         return (
             <div className="readsection">
+                <h2 className="heading">Already Read</h2>
+                <hr className="style-two" />
             </div>
         );
     }

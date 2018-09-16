@@ -5,6 +5,8 @@ class wanttoread extends Component {
     render() {
         return (
             <div className="wanttoread">
+                <h2 className="heading">Want to Read</h2>
+                <hr className="style-two" />
             </div>
         );
     }

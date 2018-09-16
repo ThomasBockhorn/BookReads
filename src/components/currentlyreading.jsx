@@ -5,6 +5,8 @@ class currentlyreading extends Component {
     render() {
         return (
             <div className="currentlyreading">
+                <h2 className="heading">Currently Reading</h2>
+                <hr className="style-two" />
             </div>
         );
     }
