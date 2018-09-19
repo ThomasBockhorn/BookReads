@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 
 class currentlyreading extends Component {
-    constructor(props) {
-        super(props);
-    }
-    state = {}
+    //Checks to see if the addBooks method applies to this container
+    bookCheck() {
+        return this.props.book.map((book) => {
+            if (book.location.toString() === "currentlyread") {
+                return this.props.onAdd();
+            }
+        });
+    };
+
     render() {
         return (
             <div className="currentlyreading">
                 <h2 className="heading">Currently Reading</h2>
                 <hr className="style-two" />
                 <div id="currentlyread" className="currentlyreadingcontainer" >
-                    {this.props.onAdd()}
+                    {this.bookCheck()}
                 </div>
             </div>
         );

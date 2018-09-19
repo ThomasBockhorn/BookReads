@@ -9,29 +9,29 @@ import Footer from './footer';
 class container extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            book: [
+                {
+                    author: "Thomas Bockhorn",
+                    title: "Test Object",
+                    location: "read",
+                    img: "https://unsplash.com/photos/Nw2lB5puyiw",
+                    selected: false
+                }
+            ]
+        };
     }
-    state = {
-        book: [
-            {
-                author: "Thomas Bockhorn",
-                title: "Test Object",
-                location: "Wanttoreadcontainer",
-                img: "https://unsplash.com/photos/Nw2lB5puyiw",
-                selected: false
-            }
-        ]
-    };
 
     //This will add a book to a particular container
     addBooks = () => {
         return this.state.book.map((item) => {
-            if (item.location.toString() === "Wanttoreadcontainer") {
-                return (
-                    <React.Fragment>
-                        <img src={item.img} height="50" width="50" />
-                    </React.Fragment>
-                )
-            }
+            return (
+                <React.Fragment>
+                    <h1>Hi</h1>
+                    <img src={item.img} height="50" width="50" />
+                </React.Fragment>
+            )
         });
     }
 
@@ -43,9 +43,9 @@ class container extends Component {
         return (
             <div id="containerinfo">
                 <Navbar />
-                <Readsdisplay onAdd={this.addBooks} />
-                <Wanttoread onAdd={this.addBooks} />
-                <Currentlyreading onAdd={this.addBooks} />
+                <Readsdisplay onAdd={this.addBooks} {...this.state} />
+                <Wanttoread onAdd={this.addBooks} {...this.state} />
+                <Currentlyreading onAdd={this.addBooks} {...this.state} />
                 <Footer />
             </div>
         );

@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
 class wanttoread extends Component {
-    constructor(props) {
-        super(props);
-    }
+    //Checks to see if the addBooks method applies to this container
+    bookCheck() {
+        return this.props.book.map((book) => {
+            if (book.location.toString() === "toread") {
+                return this.props.onAdd();
+            }
+        });
+    };
 
     render() {
         return (
@@ -11,7 +16,7 @@ class wanttoread extends Component {
                 <h2 className="heading">Want to Read</h2>
                 <hr className="style-two" />
                 <div id="toread" className="wanttoreadcontainer">
-                    {this.props.onAdd()}
+                    {this.bookCheck()}
                 </div>
             </div>
         );
