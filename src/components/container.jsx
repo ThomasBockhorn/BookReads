@@ -4,18 +4,20 @@ import Navbar from './navbar';
 import Wanttoread from './wanttoread';
 import Currentlyreading from './currentlyreading';
 import Footer from './footer';
+import Book from './book';
 
 //This container class will hold the three shelves
 class container extends Component {
     constructor(props) {
         super(props);
 
+        //The book object array
         this.state = {
             book: [
                 {
                     author: "Thomas Bockhorn",
                     title: "Test Object",
-                    location: "read",
+                    location: "toread",
                     img: "https://unsplash.com/photos/Nw2lB5puyiw",
                     selected: false
                 }
@@ -27,16 +29,10 @@ class container extends Component {
     addBooks = () => {
         return this.state.book.map((item) => {
             return (
-                <React.Fragment>
-                    <h1>Hi</h1>
-                    <img src={item.img} height="50" width="50" />
-                </React.Fragment>
+                <Book onAdd={this.addBooks} {...this.state} />
             )
         });
     }
-
-    //method to add a book to one of the three containers
-
 
 
     render() {
