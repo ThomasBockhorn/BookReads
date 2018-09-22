@@ -17,7 +17,7 @@ class container extends Component {
                 {
                     author: "Thomas Bockhorn",
                     title: "Test Object",
-                    location: "toread",
+                    location: "read",
                     img: "https://unsplash.com/photos/Nw2lB5puyiw",
                     selected: false
                 }

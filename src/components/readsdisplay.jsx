@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class readsdisplay extends Component {
     //Checks to see if the addBooks method applies to this container
-    bookCheck(props) {
+    bookCheck() {
         return this.props.book.map((book) => {
             if (book.location.toString() === "read") {
                 return this.props.onAdd();
