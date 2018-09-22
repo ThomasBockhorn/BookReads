@@ -14,7 +14,6 @@ class book extends Component {
         return (
             <React.Fragment>
                 <h1>Hi</h1>
-                <img src={this.imageFinder()} height="50" width="50" />
             </React.Fragment>
         );
     }

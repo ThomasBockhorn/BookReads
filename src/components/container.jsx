@@ -17,9 +17,9 @@ class container extends Component {
                 {
                     author: "Thomas Bockhorn",
                     title: "Test Object",
-                    location: "read",
+                    location: "toread",
                     img: "https://unsplash.com/photos/Nw2lB5puyiw",
-                    selected: false
+                    selected: true
                 }
             ]
         };
@@ -31,6 +31,14 @@ class container extends Component {
             return (
                 <Book onAdd={this.addBooks} {...this.state} />
             )
+            this.setState({});
+        });
+    }
+
+    //This will find the location
+    location = (e) => {
+        this.setState({
+            location: e.target.id
         });
     }
 
@@ -39,9 +47,9 @@ class container extends Component {
         return (
             <div id="containerinfo">
                 <Navbar />
-                <Readsdisplay onAdd={this.addBooks} {...this.state} />
-                <Wanttoread onAdd={this.addBooks} {...this.state} />
-                <Currentlyreading onAdd={this.addBooks} {...this.state} />
+                <Readsdisplay onAdd={this.addBooks} {...this.state} location={this.location} />
+                <Wanttoread onAdd={this.addBooks} {...this.state} location={this.location} />
+                <Currentlyreading onAdd={this.addBooks} {...this.state} location={this.location} />
                 <Footer />
             </div>
         );
