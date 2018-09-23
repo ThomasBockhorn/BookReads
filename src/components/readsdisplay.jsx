@@ -8,6 +8,7 @@ class readsdisplay extends Component {
                 <h2 className="heading">Already Read</h2>
                 <hr className="style-two" />
                 <div id="read" className="readsectioncontainer" onClick={this.props.location}>
+                    {this.props.onClick}
                 </div>
             </div>
         );

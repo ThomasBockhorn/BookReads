@@ -8,6 +8,7 @@ class currentlyreading extends Component {
                 <h2 className="heading">Currently Reading</h2>
                 <hr className="style-two" />
                 <div id="currentlyread" className="currentlyreadingcontainer" onClick={this.props.location}>
+                    {this.props.addBook}
                 </div>
             </div>
         );

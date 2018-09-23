@@ -28,30 +28,23 @@ class container extends Component {
 
     //This will find the location
     location = (e) => {
-        let item = this.state.book;
-        item.map((book) => {
-            if (book.selected === true) {
+        this.state.book.map((item) => {
+            if (item.selected === true) {
                 this.setState({ location: e.target.id });
             }
-        });
+        })
     };
 
-    //This function will add the book to the particular React tag
-    addBook = (e) => {
-        let item = this.state.book;
-        item.map((book) => {
-            console.log(book.location);
-            //figure out how to change the location of the book
-        });
-    }
+    //Adds book to the particular section
+
 
     render() {
         return (
             <div id="containerinfo">
                 <Navbar />
-                <Readsdisplay  {...this.state} location={this.location} onChange={this.addBook()} />
-                <Wanttoread  {...this.state} location={this.location} onChange={this.addBook()} />
-                <Currentlyreading  {...this.state} location={this.location} onChange={this.addBook()} />
+                <Readsdisplay  {...this.state} {...this.props} location={this.location} />
+                <Wanttoread  {...this.state} {...this.props} location={this.location} />
+                <Currentlyreading  {...this.state} {...this.props} location={this.location} />
                 <Footer />
             </div>
         );
