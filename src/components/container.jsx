@@ -15,6 +15,7 @@ class container extends Component {
         this.state = {
             book: [
                 {
+                    id: 1,
                     author: "Thomas Bockhorn",
                     title: "Test Object",
                     location: "toread",
@@ -27,20 +28,30 @@ class container extends Component {
 
     //This will find the location
     location = (e) => {
-        console.log(e.target.id);
-        this.setState({
-            location: e.target.id
+        let item = this.state.book;
+        item.map((book) => {
+            if (book.selected === true) {
+                this.setState({ location: e.target.id });
+            }
+        });
+    };
+
+    //This function will add the book to the particular React tag
+    addBook = (e) => {
+        let item = this.state.book;
+        item.map((book) => {
+            console.log(book.location);
+            //figure out how to change the location of the book
         });
     }
-
 
     render() {
         return (
             <div id="containerinfo">
                 <Navbar />
-                <Readsdisplay  {...this.state} location={this.location} />
-                <Wanttoread  {...this.state} location={this.location} />
-                <Currentlyreading  {...this.state} location={this.location} />
+                <Readsdisplay  {...this.state} location={this.location} onChange={this.addBook()} />
+                <Wanttoread  {...this.state} location={this.location} onChange={this.addBook()} />
+                <Currentlyreading  {...this.state} location={this.location} onChange={this.addBook()} />
                 <Footer />
             </div>
         );
