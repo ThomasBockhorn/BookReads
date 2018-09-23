@@ -25,18 +25,9 @@ class container extends Component {
         };
     }
 
-    //This will add a book to a particular container
-    addBooks = () => {
-        return this.state.book.map((item) => {
-            return (
-                <Book onAdd={this.addBooks} {...this.state} />
-            )
-            this.setState({});
-        });
-    }
-
     //This will find the location
     location = (e) => {
+        console.log(e.target.id);
         this.setState({
             location: e.target.id
         });
@@ -47,9 +38,9 @@ class container extends Component {
         return (
             <div id="containerinfo">
                 <Navbar />
-                <Readsdisplay onAdd={this.addBooks} {...this.state} location={this.location} />
-                <Wanttoread onAdd={this.addBooks} {...this.state} location={this.location} />
-                <Currentlyreading onAdd={this.addBooks} {...this.state} location={this.location} />
+                <Readsdisplay  {...this.state} location={this.location} />
+                <Wanttoread  {...this.state} location={this.location} />
+                <Currentlyreading  {...this.state} location={this.location} />
                 <Footer />
             </div>
         );
