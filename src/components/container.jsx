@@ -11,40 +11,51 @@ class container extends Component {
     constructor(props) {
         super(props);
 
-        //The book object array
-        this.state = {
-            book: [
-                {
-                    id: 1,
-                    author: "Thomas Bockhorn",
-                    title: "Test Object",
-                    location: "toread",
-                    img: "https://unsplash.com/photos/Nw2lB5puyiw",
-                    selected: true
-                }
-            ]
-        };
+
+
     }
+    //The book object array
+    state = {
+        book: [
+            {
+                id: 1,
+                author: "Thomas Bockhorn",
+                title: "Test Object",
+                location: "read",
+                img: "https://unsplash.com/photos/Nw2lB5puyiw",
+                selected: true
+            }
+        ]
+    };
+
 
     //This will find the location
     location = (e) => {
         this.state.book.map((item) => {
             if (item.selected === true) {
-                this.setState({ location: e.target.id });
+                item.location = e.target.id
+                this.setState(item);
             }
-        })
+        });
     };
 
-    //Adds book to the particular section
+    //readsDisplay function to displays books in the readsDisplay container
+    readsDisplay = () => {
+        this.state.book.map(item => {
+            <div>
+                <img src={item.img} />
+            </div>
+        })
+    }
 
 
     render() {
         return (
             <div id="containerinfo">
                 <Navbar />
-                <Readsdisplay  {...this.state} {...this.props} location={this.location} />
-                <Wanttoread  {...this.state} {...this.props} location={this.location} />
-                <Currentlyreading  {...this.state} {...this.props} location={this.location} />
+                <Readsdisplay location={this.location} readsDisplay={this.readsDisplay} />
+                <Wanttoread location={this.location} />
+                <Currentlyreading location={this.location} />
                 <Footer />
             </div>
         );
