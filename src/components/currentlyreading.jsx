@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-
+import Book from './book';
 class currentlyreading extends Component {
+
+    //This checks to see the item location that displays book when fits category
+    bookList = () => {
+        return this.props.bookList.map(item => {
+            if (item.location === "currentlyread") {
+                return <Book key={item.id} bookImage={item.img} />
+            }
+        });
+    }
 
     render() {
         return (
@@ -8,7 +17,7 @@ class currentlyreading extends Component {
                 <h2 className="heading">Currently Reading</h2>
                 <hr className="style-two" />
                 <div id="currentlyread" className="currentlyreadingcontainer" onClick={this.props.location}>
-                    {this.props.addBook}
+                    {this.bookList()}
                 </div>
             </div>
         );

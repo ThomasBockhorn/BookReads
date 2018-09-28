@@ -21,8 +21,8 @@ class container extends Component {
                 id: 1,
                 author: "Thomas Bockhorn",
                 title: "Test Object",
-                location: "read",
-                img: "https://unsplash.com/photos/Nw2lB5puyiw",
+                location: "toread",
+                img: "https://pixabay.com/en/drop-splash-drip-water-liquid-wet-3698073/",
                 selected: true
             }
         ]
@@ -39,23 +39,14 @@ class container extends Component {
         });
     };
 
-    //readsDisplay function to displays books in the readsDisplay container
-    readsDisplay = () => {
-        this.state.book.map(item => {
-            <div>
-                <img src={item.img} />
-            </div>
-        })
-    }
-
 
     render() {
         return (
             <div id="containerinfo">
                 <Navbar />
-                <Readsdisplay location={this.location} readsDisplay={this.readsDisplay} />
-                <Wanttoread location={this.location} />
-                <Currentlyreading location={this.location} />
+                <Readsdisplay location={this.location} bookList={this.state.book} />
+                <Wanttoread location={this.location} bookList={this.state.book} />
+                <Currentlyreading location={this.location} bookList={this.state.book} />
                 <Footer />
             </div>
         );
