@@ -21,7 +21,6 @@ class container extends Component {
         ]
     };
 
-
     //This will find the location
     location = (e) => {
         this.state.book.map((item) => {

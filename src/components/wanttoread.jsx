@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import Book from './book';
 class wanttoread extends Component {
 
-    //This will change the status of the image
+    //This will allow the user to select a book to be moved
     selectImage = (e) => {
-        console.log(e.target.id);
+        if (e.target.id === "image") {
+            this.props.bookList.map((item) => {
+                item.selected = true;
+                this.setState(item);
+            });
+        }
     }
 
     //This checks to see the item location that displays book when fits category
     bookList = () => {
         return this.props.bookList.map(item => {
             if (item.location === "toread") {
-                return <Book key={item.id} bookImage={item.img} selectImage={this.props.selectImage} />
+                return <Book key={item.id} bookImage={item.img} selectImage={this.selectImage} alt={item.id} />
             }
         });
     }
