@@ -12,6 +12,7 @@ class readsdisplay extends Component {
         });
     }
 
+
     render() {
         return (
             <div className="readsection">

@@ -4,16 +4,9 @@ import Navbar from './navbar';
 import Wanttoread from './wanttoread';
 import Currentlyreading from './currentlyreading';
 import Footer from './footer';
-import Book from './book';
 
 //This container class will hold the three shelves
 class container extends Component {
-    constructor(props) {
-        super(props);
-
-
-
-    }
     //The book object array
     state = {
         book: [
@@ -22,7 +15,7 @@ class container extends Component {
                 author: "Thomas Bockhorn",
                 title: "Test Object",
                 location: "toread",
-                img: "https://pixabay.com/en/drop-splash-drip-water-liquid-wet-3698073/",
+                img: "https://images.freeimages.com/images/large-previews/322/indian-heads-1391201.jpg",
                 selected: true
             }
         ]

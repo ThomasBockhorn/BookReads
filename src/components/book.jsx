@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 
-function book(props) {
-    return (
-        <img src={props.bookImage} height="80" width="50" />
-    )
+
+class book extends Component {
+
+    //This method will move the location of the book
+    selectMove = (e) => {
+        console.log(e.target.src)
+
+    }
+
+    render() {
+        return <img src={this.props.bookImage} alt="Sample" height="100" width="80" onClick={this.selectMove} />
+    }
 }
 
 export default book;
