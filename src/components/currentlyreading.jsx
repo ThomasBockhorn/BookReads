@@ -6,7 +6,7 @@ class currentlyreading extends Component {
     bookList = () => {
         return this.props.bookList.map(item => {
             if (item.location === "currentlyread") {
-                return <Book key={item.id} bookImage={item.img} />
+                return <Book key={item.id} bookImage={item.img} selectImage={this.props.selectImage} />
             }
         });
     }

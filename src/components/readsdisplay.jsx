@@ -3,11 +3,13 @@ import Book from './book';
 
 class readsdisplay extends Component {
 
+
+
     //This checks to see the item location that displays book when fits category
     bookList = () => {
         return this.props.bookList.map(item => {
             if (item.location === "read") {
-                return <Book key={item.id} bookImage={item.img} />
+                return <Book key={item.id} bookImage={item.img} selectImage={this.props.selectImage} />
             }
         });
     }

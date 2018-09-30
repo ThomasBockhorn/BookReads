@@ -25,8 +25,9 @@ class container extends Component {
     //This will find the location
     location = (e) => {
         this.state.book.map((item) => {
-            if (item.selected === true) {
-                item.location = e.target.id
+            if ((item.selected === true) && (e.target.id !== "image")) {
+                item.location = e.target.id;
+                item.selected = false;
                 this.setState(item);
             }
         });
