@@ -6,12 +6,14 @@ class navbar extends Component {
     //This will get the value of the search term and input it into the state
     handleChange = (e) => {
         this.setState({ input: e.target.value });
-    };
+
+    }
 
     //This button will get the value and conduct the search
-    handleButton = () => {
+    handleButton = (e) => {
+        e.preventDefault();
         alert(this.state.input);
-    };
+    }
 
     render() {
         return (

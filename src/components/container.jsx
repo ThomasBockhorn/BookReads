@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Readsdisplay from './readsdisplay';
-import Navbar from './navbar';
 import Wanttoread from './wanttoread';
 import Currentlyreading from './currentlyreading';
-import Footer from './footer';
 
 //This container class will hold the three shelves
 class container extends Component {
@@ -36,11 +34,9 @@ class container extends Component {
     render() {
         return (
             <div id="containerinfo">
-                <Navbar />
                 <Readsdisplay location={this.location} bookList={this.state.book} />
                 <Wanttoread location={this.location} bookList={this.state.book} />
                 <Currentlyreading location={this.location} bookList={this.state.book} />
-                <Footer />
             </div>
         );
     }
