@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class navbar extends Component {
     state = { input: "" }
@@ -11,8 +12,8 @@ class navbar extends Component {
 
     //This button will get the value and conduct the search
     handleButton = (e) => {
-        e.preventDefault();
-        alert(this.state.input);
+        console.log(this.state.input)
+
     }
 
     render() {
@@ -25,7 +26,7 @@ class navbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={this.handleChange}></input>
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={this.handleButton}>Search</button>
+                        <Link to={{ pathname: "/search", search: this.state.input }} className="btn btn-outline-success my-2 my-sm-0" role="button">Search</Link>
                     </form>
                 </div>
             </nav>
