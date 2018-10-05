@@ -26,7 +26,7 @@ class navbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={this.handleChange}></input>
-                        <Link to={{ pathname: "/search", search: this.state.input }} className="btn btn-outline-success my-2 my-sm-0" role="button">Search</Link>
+                        <Link to={{ pathname: "/search", search: "?search=" + this.state.input }} className="btn btn-outline-success my-2 my-sm-0" role="button">Search</Link>
                     </form>
                 </div>
             </nav>
