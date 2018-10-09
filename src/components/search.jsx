@@ -34,10 +34,17 @@ class search extends Component {
             )
     }
 
+    check = () => {
+        this.state.books.map(item => {
+            console.log(item.volumeInfo.imageLinks);
+        })
+    }
     render() {
         return (
             <div id="searchfield">
-
+                {this.state.books.map(item => (
+                    <img key={item.id} src={item.volumeInfo.imageLinks.thumbnail} height="100" width="80" />
+                ))}
             </div>
         );
     }
