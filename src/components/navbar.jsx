@@ -10,12 +10,6 @@ class navbar extends Component {
 
     }
 
-    //This button will get the value and conduct the search
-    handleButton = (e) => {
-        console.log(this.state.input)
-
-    }
-
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="nav">
