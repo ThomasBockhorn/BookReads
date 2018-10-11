@@ -38,7 +38,9 @@ class search extends Component {
         return (
             <div id="searchfield">
                 {this.state.books.map(item => (
-                    <img id="searchBook" key={item.id} src={item.volumeInfo.imageLinks.thumbnail} height="100" width="80" />
+                    <div key={item.id} onClick={this.props.addBook}>
+                        <img id={item.id} src={item.volumeInfo.imageLinks.thumbnail} height="100" width="80" />
+                    </div>
                 ))}
             </div>
         );
