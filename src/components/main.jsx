@@ -8,24 +8,30 @@ import Container from './container';
 
 class main extends Component {
     state = {
-        bookset: [
-            {
-                id: "",
-                img: "",
-                location: "toread",
-                selected: false
-            }
-        ]
+        bookset: []
     }
 
-    //This tests the doubleClick
+    //This will add the book to the main state
     addBook = (routeProps) => {
-        this.state.bookset.map((item) => {
-            item.id = routeProps.target.id;
-            item.img = routeProps.target.src;
-            this.setState(item);
-        });
+        let booklist = this.state.bookset;
+
+        //this creates a temporary book
+        let book = {
+            id: "",
+            img: "",
+            location: "toread",
+            selected: false
+        }
+        //This assigns a new values to book
+        if (routeProps != "") {
+            book.id = routeProps.target.id;
+            book.img = routeProps.target.src;
+        }
+        //Pushes temp books to the array of objects
+        booklist.push(book);
+        this.setState(booklist);
     }
+
 
     render() {
         return (
