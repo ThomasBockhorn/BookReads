@@ -5,38 +5,37 @@ import Currentlyreading from './currentlyreading';
 
 //This container class will hold the three shelves
 class container extends Component {
-    //The book object array
-    state = {
-        book: [
-            {
-                id: 1,
-                author: "Thomas Bockhorn",
-                title: "Test Object",
-                location: "toread",
-                img: "https://images.freeimages.com/images/large-previews/322/indian-heads-1391201.jpg",
-                selected: true
-            }
-        ]
-    };
 
-    //This will find the location
-    location = (e) => {
-        this.state.book.map((item) => {
-            if ((item.selected === true) && (e.target.id !== "image")) {
-                item.location = e.target.id;
-                item.selected = false;
+    //This method will changed the status of book selection from false to true
+    bookSelected = (e) => {
+        this.props.bookList.map((item) => {
+            if (e.target.id === item.id) {
+                item.selected = true;
                 this.setState(item);
             }
         });
     };
 
+    //This method will change the location of the book
+    destination = (e) => {
+        this.props.bookList.map((item) => {
+            if ((e.target.id === "toread") || (e.target.id === "read") || (e.target.id === "currentlyread")) {
+                if (item.selected === true) {
+                    item.location = e.target.id;
+                    item.selected = false;
+                    this.setState(item);
+                }
+            }
+        });
+
+    };
 
     render() {
         return (
             <div id="containerinfo">
-                <Readsdisplay location={this.location} bookList={this.state.book} />
-                <Wanttoread location={this.location} bookList={this.state.book} />
-                <Currentlyreading location={this.location} bookList={this.state.book} />
+                <Readsdisplay bookList={this.props.bookList} bookSelected={this.bookSelected} destination={this.destination} />
+                <Wanttoread bookList={this.props.bookList} bookSelected={this.bookSelected} destination={this.destination} />
+                <Currentlyreading bookList={this.props.bookList} bookSelected={this.bookSelected} destination={this.destination} />
             </div>
         );
     }

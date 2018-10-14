@@ -23,7 +23,13 @@ class navbar extends Component {
                         <Link to={{ pathname: "/search", search: "?search=" + this.state.input }} className="btn btn-outline-success my-2 my-sm-0" role="button">Search</Link>
                     </form>
                 </div>
-            </nav>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><Link to={"/index"} > Home</Link></li>
+                        <li className="breadcrumb-item active" aria-current="page">Search</li>
+                    </ol>
+                </nav>
+            </nav >
         );
     }
 }

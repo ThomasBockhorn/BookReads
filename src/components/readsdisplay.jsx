@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
-import Book from './book';
 
 class readsdisplay extends Component {
-
-    //This will allow the user to select a book to be moved
-    selectImage = (e) => {
-        if (e.target.id === "image") {
-            this.props.bookList.map((item) => {
-                item.selected = true;
-                this.setState(item);
-            });
-        }
-    }
 
     //This checks to see the item location that displays book when fits category
     bookList = () => {
         return this.props.bookList.map(item => {
             if (item.location === "read") {
-                return <Book key={item.id} bookImage={item.img} selectImage={this.selectImage} alt={item.id} />
+                return (
+                    <div onClick={this.props.bookSelected}>
+                        <img id={item.id} src={item.img} height="100" width="80" location={item.location} />
+                    </div>
+                )
             }
         });
     }
@@ -28,7 +21,7 @@ class readsdisplay extends Component {
             <div className="readsection">
                 <h2 className="heading">Already Read</h2>
                 <hr className="style-two" />
-                <div id="read" className="readsectioncontainer" onClick={this.props.location}>
+                <div id="read" className="readsectioncontainer" onClick={this.props.destination}>
                     {this.bookList()}
                 </div>
             </div>

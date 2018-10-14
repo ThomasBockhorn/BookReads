@@ -7,8 +7,11 @@ import Container from './container';
 
 
 class main extends Component {
-    state = {
-        bookset: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            bookset: []
+        }
     }
 
     //This will add the book to the main state
@@ -32,14 +35,14 @@ class main extends Component {
         this.setState(booklist);
     }
 
-
+    //This will change the location of the book
     render() {
         return (
             <BrowserRouter>
                 <div>
                     <Navbar />
-                    <Route path="/index" component={Container} />
-                    <Route path="/search" render={(routeProps) => <Search {...routeProps} addBook={(e) => this.addBook(e)} />}
+                    <Route path="/index" render={(routerProps) => <Container bookList={this.state.bookset} {...routerProps} />} />
+                    <Route path="/search" render={(routerProps) => <Search {...routerProps} addBook={(book) => this.addBook(book)} />}
                     />} />
                     <Footer />
                 </div>
