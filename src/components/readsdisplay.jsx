@@ -7,8 +7,8 @@ class readsdisplay extends Component {
         return this.props.bookList.map(item => {
             if (item.location === "read") {
                 return (
-                    <div onClick={this.props.bookSelected}>
-                        <img id={item.id} src={item.img} height="100" width="80" location={item.location} />
+                    <div key={item.id} onClick={this.props.bookSelected} id="book">
+                        <img id={item.id} src={item.img} height="100" width="80" location={item.location} alt={item.id} />
                     </div>
                 )
             }

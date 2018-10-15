@@ -4,10 +4,9 @@ class currentlyreading extends Component {
     bookList = () => {
         return this.props.bookList.map(item => {
             if (item.location === "currentlyread") {
-                console.log(item.selected);
                 return (
-                    <div onClick={this.props.bookSelected}>
-                        <img id={item.id} src={item.img} height="100" width="80" location={item.location} />
+                    <div key={item.id} onClick={this.props.bookSelected} id="book">
+                        <img id={item.id} src={item.img} height="100" width="80" location={item.location} alt={item.id} />
                     </div>
                 )
             }

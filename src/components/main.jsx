@@ -26,7 +26,7 @@ class main extends Component {
             selected: false
         }
         //This assigns a new values to book
-        if (routeProps != "") {
+        if (routeProps !== "") {
             book.id = routeProps.target.id;
             book.img = routeProps.target.src;
         }

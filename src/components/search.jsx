@@ -34,12 +34,22 @@ class search extends Component {
             )
     }
 
+    //This will delete the selected book
+    deleteSelected = (e) => {
+        //This sent the info to addBooks
+        this.props.addBook(e);
+
+        //This will delete the current search list
+        const newSearch = this.state.books.filter((term) => term.id != e.target.id)
+        this.setState({ books: newSearch });
+    }
+
     render() {
         return (
             <div id="searchfield">
                 {this.state.books.map(item => (
-                    <div key={item.id} onClick={this.props.addBook}>
-                        <img id={item.id} src={item.volumeInfo.imageLinks.thumbnail} height="100" width="80" />
+                    <div key={item.id} onClick={(e) => { this.deleteSelected(e) }}>
+                        <img id={item.id} src={item.volumeInfo.imageLinks.thumbnail} height="100" width="80" alt={item.id} />
                     </div>
                 ))}
             </div>
