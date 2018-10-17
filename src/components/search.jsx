@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import '../search.css'
-import queryString from 'query-string'
+import '../search.css';
+import queryString from 'query-string';
+import * as BooksAPI from '../BooksAPI';
+
 
 class search extends Component {
     constructor(props) {
@@ -17,21 +19,19 @@ class search extends Component {
     componentDidMount() {
         const parsed = queryString.parse(this.props.location.search);
         const searchTerm = parsed.search;
-        fetch("https://www.googleapis.com/books/v1/volumes?q=" + searchTerm)
-            .then(res => res.json())
+        BooksAPI.search(searchTerm)
             .then((result) => {
                 this.setState({
                     isLoaded: true,
-                    books: result.items
+                    books: result
                 });
-            },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
+            })
+            .catch((error) => {
+                this.setState({
+                    isLoaded: true,
+                    error: error
+                })
+            })
     }
 
     //This will delete the selected book
@@ -49,7 +49,7 @@ class search extends Component {
             <div id="searchfield">
                 {this.state.books.map(item => (
                     <div key={item.id} onClick={(e) => { this.deleteSelected(e) }}>
-                        <img id={item.id} src={item.volumeInfo.imageLinks.thumbnail} height="100" width="80" alt={item.id} />
+                        <img id={item.id} src={item.imageLinks.smallThumbnail} height="100" width="80" alt={item.authors} />
                     </div>
                 ))}
             </div>

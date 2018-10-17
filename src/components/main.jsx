@@ -4,6 +4,7 @@ import Search from './search';
 import Navbar from './navbar';
 import Footer from './footer';
 import Container from './container';
+import * as BooksAPI from '../BooksAPI';
 
 
 class main extends Component {
@@ -14,6 +15,11 @@ class main extends Component {
         }
     }
 
+    //This will display the books that were picked
+    componentDidUpdate = () => {
+        console.log(this.state.bookset);
+    }
+
     //This will add the book to the main state
     addBook = (routeProps) => {
         let booklist = this.state.bookset;
@@ -22,6 +28,8 @@ class main extends Component {
         let book = {
             id: "",
             img: "",
+            title: "",
+            author: "",
             location: "toread",
             selected: false
         }
@@ -29,10 +37,15 @@ class main extends Component {
         if (routeProps !== "") {
             book.id = routeProps.target.id;
             book.img = routeProps.target.src;
+            book.title = routeProps.target.title;
+            book.author = routeProps.target.authors;
         }
         //Pushes temp books to the array of objects
         booklist.push(book);
         this.setState(booklist);
+
+        //This changes the entry to the server
+        BooksAPI.get((book.id)).then(item => BooksAPI.update(item, book.location))
     }
 
     //This will change the location of the book

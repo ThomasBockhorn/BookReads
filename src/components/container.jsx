@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Readsdisplay from './readsdisplay';
 import Wanttoread from './wanttoread';
 import Currentlyreading from './currentlyreading';
+import * as BooksAPI from '../BooksAPI';
 
 //This container class will hold the three shelves
 class container extends Component {
@@ -24,6 +25,9 @@ class container extends Component {
                     item.location = e.target.id;
                     item.selected = false;
                     this.setState(item);
+
+                    //This will update the server
+                    BooksAPI.get((item.id)).then(book => BooksAPI.update(book, item.location))
                 }
             }
         });
