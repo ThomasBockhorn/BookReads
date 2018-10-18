@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class navbar extends Component {
     state = { input: "" }
@@ -10,6 +11,15 @@ class navbar extends Component {
 
     }
 
+    //This will allow the user to press enter to submit the search term
+    submit = (e) => {
+        e.preventDefault();
+        this.props.history.push({
+            pathname: "/search",
+            search: "?search=" + this.state.input
+        });
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="nav">
@@ -18,9 +28,11 @@ class navbar extends Component {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <form className="form-inline my-2 my-lg-0">
+                    <form className="form-inline my-2 my-lg-0" onSubmit={this.submit}>
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={this.handleChange}></input>
-                        <Link to={{ pathname: "/search", search: "?search=" + this.state.input }} className="btn btn-outline-success my-2 my-sm-0" role="button">Search</Link>
+                        <Link to={{ pathname: "/search", search: "?search=" + this.state.input }}>
+                            <button type="button" className="btn btn-outline-success my-2 my-sm-0">Search</button>
+                        </Link>
                     </form>
                 </div>
                 <nav aria-label="breadcrumb">
@@ -33,4 +45,4 @@ class navbar extends Component {
     }
 }
 
-export default navbar;
+export default withRouter(navbar);

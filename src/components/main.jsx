@@ -46,8 +46,7 @@ class main extends Component {
                 <div>
                     <Navbar />
                     <Route exact path="/" render={(routerProps) => <Container bookList={this.state.bookset} {...routerProps} />} />
-                    <Route path="/search" render={(routerProps) => <Search {...routerProps} addBook={(book) => this.addBook(book)} />}
-                    />} />
+                    <Route path="/search" render={(routerProps) => <Search {...routerProps} addBook={(book) => this.addBook(book)} />} />
                     <Footer />
                 </div>
             </BrowserRouter>
