@@ -38,6 +38,7 @@ class navbar extends Component {
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><Link to={"/"} > Home</Link></li>
+                        <li className="breadcrumb-item"><Link to={{ pathname: "/search", search: "?search=" + this.state.input }}>Search</Link></li>
                     </ol>
                 </nav>
             </nav >
