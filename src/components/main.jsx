@@ -15,11 +15,6 @@ class main extends Component {
         }
     }
 
-    //This will display the books that were picked
-    componentDidUpdate = () => {
-        console.log(this.state.bookset);
-    }
-
     //This will add the book to the main state
     addBook = (routeProps) => {
         let booklist = this.state.bookset;
@@ -28,8 +23,6 @@ class main extends Component {
         let book = {
             id: "",
             img: "",
-            title: "",
-            author: "",
             location: "toread",
             selected: false
         }
@@ -37,8 +30,6 @@ class main extends Component {
         if (routeProps !== "") {
             book.id = routeProps.target.id;
             book.img = routeProps.target.src;
-            book.title = routeProps.target.title;
-            book.author = routeProps.target.authors;
         }
         //Pushes temp books to the array of objects
         booklist.push(book);
@@ -54,7 +45,7 @@ class main extends Component {
             <BrowserRouter>
                 <div>
                     <Navbar />
-                    <Route path="/index" render={(routerProps) => <Container bookList={this.state.bookset} {...routerProps} />} />
+                    <Route exact path="/" render={(routerProps) => <Container bookList={this.state.bookset} {...routerProps} />} />
                     <Route path="/search" render={(routerProps) => <Search {...routerProps} addBook={(book) => this.addBook(book)} />}
                     />} />
                     <Footer />

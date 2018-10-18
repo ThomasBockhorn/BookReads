@@ -3,8 +3,12 @@
     height: 1500px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: top;
     background: #E3E7E8;
     padding: 5%;
+    align-content: flex-start;
 }
+
+#book{
+    margin: 1em;
+    height: 7em;
+  }

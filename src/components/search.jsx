@@ -40,7 +40,7 @@ class search extends Component {
         this.props.addBook(e);
 
         //This will delete the current search list
-        const newSearch = this.state.books.filter((term) => term.id != e.target.id)
+        const newSearch = this.state.books.filter((term) => term.id !== e.target.id)
         this.setState({ books: newSearch });
     }
 
@@ -48,7 +48,7 @@ class search extends Component {
         return (
             <div id="searchfield">
                 {this.state.books.map(item => (
-                    <div key={item.id} onClick={(e) => { this.deleteSelected(e) }}>
+                    <div id="book" key={item.id} onClick={(e) => { this.deleteSelected(e) }}>
                         <img id={item.id} src={item.imageLinks.smallThumbnail} height="100" width="80" alt={item.authors} />
                     </div>
                 ))}
