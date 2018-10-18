@@ -86,8 +86,8 @@ h2.heading {
   margin: 0;
 }
 
-#image:focus img{
-  border: 2px solid blue;
+#image:focus div{
+  border: 5px solid blue;
 }
 
 #book{
