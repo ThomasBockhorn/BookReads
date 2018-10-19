@@ -21,16 +21,17 @@ class search extends Component {
         const searchTerm = parsed.search;
         BooksAPI.search(searchTerm)
             .then((result) => {
-                this.setState({
-                    isLoaded: true,
-                    books: result
-                });
+                if (result.error != "empty query") {
+                    this.setState({
+                        isLoaded: true,
+                        books: result
+                    });
+                }
             })
-            .catch((error) => {
+            .catch((result) => {
                 this.setState({
-                    isLoaded: true,
-                    error: error
-                })
+                    isLoaded: false
+                });
             })
     }
 
@@ -44,14 +45,28 @@ class search extends Component {
         this.setState({ books: newSearch });
     }
 
-    render() {
-        return (
-            <div id="searchfield">
-                {this.state.books.map(item => (
+    //This will display the books
+    searchDisplay = () => {
+        if (this.state.books.length !== 0) {
+            return (
+                this.state.books.map(item => (
                     <div id="book" key={item.id} onClick={(e) => { this.deleteSelected(e) }}>
                         <img id={item.id} src={item.imageLinks.smallThumbnail} height="100" width="80" alt={item.authors} />
                     </div>
-                ))}
+                ))
+            );
+        }
+        else {
+            return <div />
+        }
+    }
+
+
+
+    render() {
+        return (
+            <div id="searchfield">
+                {this.searchDisplay()}
             </div>
         );
     }
