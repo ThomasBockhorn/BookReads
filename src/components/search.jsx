@@ -21,7 +21,7 @@ class search extends Component {
         const searchTerm = parsed.search;
         BooksAPI.search(searchTerm)
             .then((result) => {
-                if (result.error != "empty query") {
+                if (result.error !== "empty query") {
                     this.setState({
                         isLoaded: true,
                         books: result
@@ -48,13 +48,15 @@ class search extends Component {
     //This will display the books
     searchDisplay = () => {
         if (this.state.books.length !== 0) {
-            return (
-                this.state.books.map(item => (
-                    <div id="book" key={item.id} onClick={(e) => { this.deleteSelected(e) }}>
-                        <img id={item.id} src={item.imageLinks.smallThumbnail} height="100" width="80" alt={item.authors} />
-                    </div>
-                ))
-            );
+            return this.state.books.map(item => {
+                if (!!item.imageLinks) {
+                    return (
+                        <div id="book" key={item.id} onClick={(e) => { this.deleteSelected(e) }}>
+                            <img id={item.id} src={item.imageLinks.smallThumbnail} height="100" width="80" alt={item.authors} />
+                        </div>
+                    )
+                };
+            })
         }
         else {
             return <div />
